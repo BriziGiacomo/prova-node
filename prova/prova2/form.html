@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Minimale</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="h-full bg-white text-zinc-900 flex items-center justify-center p-6">
+
+    <div class="w-full max-w-sm space-y-6">
+        
+        <div>
+            <h1 class="text-xl font-semibold tracking-tight text-zinc-900">Registrazione</h1>
+            <p class="text-sm text-zinc-500 mt-1">Inserisci i tuoi dati per procedere.</p>
+        </div>
+
+        <form id="minimalForm" class="space-y-4" novalidate method="POST" action="/submit">
+            <div>
+                <label for="firstName" class="block text-xs font-medium text-zinc-600 uppercase tracking-wider mb-1.5">Nome</label>
+                <input type="text" id="firstName" name="firstName" required
+                    class="w-full bg-zinc-50 border border-zinc-200 rounded-lg px-3.5 py-2.5 text-sm text-zinc-900 focus:outline-none focus:border-zinc-900 transition-colors"
+                    placeholder="Mario">
+            </div>
+
+            <div>
+                <label for="lastName" class="block text-xs font-medium text-zinc-600 uppercase tracking-wider mb-1.5">Cognome</label>
+                <input type="text" id="lastName" name="lastName" required
+                    class="w-full bg-zinc-50 border border-zinc-200 rounded-lg px-3.5 py-2.5 text-sm text-zinc-900 focus:outline-none focus:border-zinc-900 transition-colors"
+                    placeholder="Rossi">
+            </div>
+
+            <button type="submit"
+                class="w-full py-2.5 px-4 bg-zinc-900 hover:bg-zinc-800 text-white font-medium text-sm rounded-lg transition-colors cursor-pointer">
+                Invia
+            </button>
+        </form>
+
+        <div id="successMessage" class="hidden text-xs text-emerald-600 font-medium text-center py-2">
+            Dati inviati con successo.
+        </div>
+
+    </div>
+
+    <script>
+        const form = document.getElementById('minimalForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+
+            if (firstName && lastName) {
+                form.reset();
+                successMessage.classList.remove('hidden');
+                setTimeout(() => {
+                    successMessage.classList.add('hidden');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
