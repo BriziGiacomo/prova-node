@@ -1,7 +1,7 @@
 var express = require('express');
+var bodyParser=require('body-parser');
 var app =express();
 var port = 4000;
-var bodyParser=require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
